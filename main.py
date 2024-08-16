@@ -1,73 +1,19 @@
 import random
 
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+import hangman_words
+import hangman_art
+from hangman_art import logo
 
 end_of_game = False
-word_list = ['camel', 'bird', 'yellow', 'green', 'car', 'cat', 'hello', 'word', 'world', 'football', 'computer', 'mango', 'banana', 'english', 'usa', 'weapon', 'monkey', 'key', 'random', 'python', 'javascript', 'earth', 'planet', 'cow']
 
-chosen_word = random.choice(word_list)
+
+chosen_word = random.choice(hangman_words.word_list)
 word_length = len(chosen_word)
 
 # Create a variable called 'lives' to keep track of the number of lives left. 
+print(logo)
 lives = 6
 
-# Testing code
-print(f'Pssst, the solution is {chosen_word}.')
 
 # Create blanks
 display = []
@@ -91,7 +37,7 @@ while not end_of_game:
         # If guess is not a letter in the chosen_word, reduce 'lives' by 1.
         # If lives go down to 0, the game should stop and it should print "You lose."
         lives -= 1
-        print(stages[lives])
+        print(hangman_art.stages[lives])
         if lives == 0:
             end_of_game = True
             print("You lose.")
